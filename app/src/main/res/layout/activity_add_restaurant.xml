@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_sand">
+
+    <TextView
+        android:id="@+id/dishNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dish Name:"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:textColor="@color/mud"
+        android:layout_marginTop="45dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <EditText
+        android:id="@+id/dishNameInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:inputType="text"
+        android:hint="dish name"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/dark_sand"
+        android:background="@drawable/rounded_corner"
+        android:layout_marginTop="38dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dishNameText"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/restaurantNameText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Restaurant:"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:textColor="@color/mud"
+        android:layout_marginTop="33dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toBottomOf="@id/dishNameText"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <EditText
+        android:id="@+id/restaurantNameInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:inputType="text"
+        android:hint="restaurant name"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/dark_sand"
+        android:background="@drawable/rounded_corner"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/dishNameInput"
+        app:layout_constraintStart_toEndOf="@+id/restaurantNameText"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/dishRatingText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Rating:"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:textColor="@color/mud"
+        android:layout_marginTop="33dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toBottomOf="@id/restaurantNameText"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <RatingBar
+        android:id="@+id/dishRating"
+        android:progressTint="@color/forest_green"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toBottomOf="@id/restaurantNameText"
+        app:layout_constraintStart_toEndOf="@+id/dishRatingText"/>
+
+    <TextView
+        android:id="@+id/mapsFieldText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Google Maps:"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:textColor="@color/mud"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toBottomOf="@id/dishRatingText"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/mapsFieldInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:inputType="text"
+        android:hint="google maps link"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/dark_sand"
+        android:background="@drawable/rounded_corner"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/dishRating"
+        app:layout_constraintStart_toEndOf="@+id/mapsFieldText"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/dishDescriptionText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Dish Description:"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:textColor="@color/mud"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toBottomOf="@id/mapsFieldInput"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/dishDescription"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="15dp"
+        android:inputType="text"
+        android:hint="description of dish"
+        android:textColorHint="@color/dark_sand"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_corner"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toBottomOf="@id/dishDescriptionText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
