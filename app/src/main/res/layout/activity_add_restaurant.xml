@@ -144,12 +144,13 @@
         app:layout_constraintTop_toBottomOf="@id/mapsFieldInput"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
+    <EditText
         android:id="@+id/dishDescription"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="15dp"
-        android:inputType="text"
+        android:gravity="top"
+        android:inputType="textMultiLine"
         android:hint="description of dish"
         android:textColorHint="@color/dark_sand"
         android:textSize="20sp"
