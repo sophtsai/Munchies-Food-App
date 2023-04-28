@@ -44,13 +44,13 @@
         app:layout_constraintTop_toBottomOf="@id/restaurantName"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <TextView
+    <Button
         android:id="@+id/mapsField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Google Maps"
         android:textSize="20sp"
-        android:textColor="@color/mud"
+        android:textColor="@color/white"
         android:layout_marginTop="5dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
