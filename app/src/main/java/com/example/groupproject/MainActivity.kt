@@ -2,6 +2,8 @@ package com.example.groupproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var testData : Foodlist
@@ -9,6 +11,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setTestData()
+
+        val foodListRv : RecyclerView = findViewById<RecyclerView>(R.id.foodlistRv)
+
+        var foodTypesList : Array<Food> = testData.getFoodArray() // Get list of food types
+
+        // Create adapter passing in list of food types
+        val adapter = FoodlistRecyclerViewAdapter(foodTypesList)
+
+        foodListRv.adapter = adapter // Attach adapter to recycler view to populate items
+        foodListRv.layoutManager = LinearLayoutManager(this) // Set layout manager to position items
     }
 
     private fun setTestData ( ) {
