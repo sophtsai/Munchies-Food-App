@@ -1,6 +1,8 @@
 package com.example.groupproject
 
-class Food {
+import java.io.Serializable
+
+class Food : Serializable {
     private var foodTypeName : String
     private var description : String
     private var restaurants : Array<Restaurant>

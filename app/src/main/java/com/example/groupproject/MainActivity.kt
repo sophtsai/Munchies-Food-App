@@ -14,17 +14,19 @@ import com.google.android.gms.ads.AdView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var testData : Foodlist
+    private lateinit var foodListRv : RecyclerView
+    private lateinit var foodTypesList : Array<Food>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setTestData()
 
-        val foodListRv : RecyclerView = findViewById(R.id.foodlistRv)
+        foodListRv= findViewById(R.id.foodlistRv)
 
-        val foodTypesList : Array<Food> = testData.getFoodArray() // Get list of food types
+        foodTypesList = testData.getFoodArray() // Get list of food types
 
         // Create adapter passing in list of food types
-        val adapter = FoodlistRecyclerViewAdapter(foodTypesList)
+        val adapter = FoodlistRecyclerViewAdapter(this, foodTypesList)
 
         foodListRv.adapter = adapter // Attach adapter to recycler view to populate items
         foodListRv.layoutManager = LinearLayoutManager(this) // Set layout manager to position items
@@ -68,31 +70,31 @@ class MainActivity : AppCompatActivity() {
                     "such as tender pieces of antibiotic-free chicken and farm-fresh vegetables, " +
                     "that are carefully selected and combined with a flavorful broth, making it a " +
                     "nutritious and satisfying option among other fast-casual restaurants.",
-            "214 Campus Drive, College Park, MD 20742", 2.3f)
+            "214 Campus Drive, College Park, MD 20742", 2.5f)
         val umdSouthSoup = Restaurant("University of Maryland South Campus Dining Hall",
         "Hearty Chicken Noodle Soup", "UMD South Dining Hall's chicken noodle soup is a " +
                     "comforting and classic dish that features tender pieces of chicken, hearty egg " +
                     "noodles, and a savory broth infused with aromatic herbs and spices, providing " +
                     "a warm and satisfying meal option for students and faculty alike.",
-        "7093 Preinkert Dr, College Park, MD 20740", 3.8f)
+        "7093 Preinkert Dr, College Park, MD 20740", 4.0f)
         val hanami = Restaurant("Hanami", "Chicken Teriyaki",
         "Hanami's chicken teriyaki is known for its perfectly grilled and juicy chicken, " +
                 "combined with a well-balanced and flavorful teriyaki glaze, and served with " +
                 "high-quality, freshly prepared sides that elevate the dish and make it stand out " +
                 "among other Japanese restaurants.",
-            "8145 Baltimore Ave Ste M, College Park, MD 20740-2471", 4.8f)
+            "8145 Baltimore Ave Ste M, College Park, MD 20740-2471", 5.0f)
         val umdSouthTeriyaki = Restaurant("University of Maryland South Campus Dining Hall",
         "Teriyaki Chicken", "UMD South Dining Hall's teriyaki chicken is typically " +
                     "a delicious dish featuring tender pieces of grilled or broiled chicken coated " +
                     "in a flavorful teriyaki sauce, served with a side of steamed rice and " +
                     "vegetables, providing a tasty and convenient meal option for students and " +
-                    "faculty on campus.", "7093 Preinkert Dr, College Park, MD 20740", 1.6f)
+                    "faculty on campus.", "7093 Preinkert Dr, College Park, MD 20740", 1.5f)
         val pupuseria = Restaurant("Pupuseria La Familiar", "Pupusas",
         "Pupuseria La Familiar's pupusas are known for their authentic Salvadoran flavors " +
                 "and generous fillings, along with the skillful grilling techniques that result " +
                 "in a crispy exterior and a warm, gooey interior, making them a standout among " +
                 "other pupuserias.",
-        "8145 Baltimore Ave Ste K, College Park, MD 20740-2491", 0.8f)
+        "8145 Baltimore Ave Ste K, College Park, MD 20740-2491", 1.0f)
 
         /** Foods - create all the foods using above restaurants **/
         val chickenNoodle = Food("Chicken Noodle Soup", "The heartwarming " +

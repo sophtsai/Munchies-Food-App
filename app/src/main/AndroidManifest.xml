@@ -13,6 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GroupProject"
         tools:targetApi="31">
+        <!-- Restaurant Profile Activity -->
+        <activity android:name=".RestaurantProfileActivity"
+            android:exported="true" />
+        <!-- Specific Dish Activity -->
+        <activity android:name=".SpecificDishActivity"
+            android:exported="true" />
+        <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
