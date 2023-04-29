@@ -4,6 +4,7 @@ import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.groupproject.databinding.ActivityDisplayMapBinding
@@ -21,6 +22,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         binding = ActivityDisplayMapBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -64,6 +66,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
 
 
+        }
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
