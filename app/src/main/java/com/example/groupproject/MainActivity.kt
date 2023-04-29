@@ -20,11 +20,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var foodTypesList : Array<Food>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_display_map) //R.layout.activity_main
+        setContentView(R.layout.activity_main)
         setTestData()
-
-        var myIntent : Intent = Intent(this, MapsActivity::class.java)
-        this.startActivity(myIntent)
 
         foodListRv= findViewById(R.id.foodlistRv)
 

@@ -1,5 +1,6 @@
 package com.example.groupproject
 
+import android.util.Log
 import java.io.Serializable
 
 class Restaurant : Serializable {
@@ -8,6 +9,8 @@ class Restaurant : Serializable {
     private var description : String
     private var address : String
     private var avgRating : Float
+    private var latitude : Double
+    private var longitude : Double
 
     //constructor with default rating set to -1.0f if the user does not enter a rating
     constructor (newRestName : String, newDishName : String, desc : String,
@@ -17,6 +20,8 @@ class Restaurant : Serializable {
         avgRating = rating
         description = desc
         address = newAddress
+        latitude = 0.0
+        longitude = 0.0
     }
 
     //getters
@@ -40,6 +45,14 @@ class Restaurant : Serializable {
         return avgRating
     }
 
+    fun getLatitude () : Double {
+        return latitude
+    }
+
+    fun getLongitude() : Double {
+        return longitude
+    }
+
     //setters
     fun setRestName (newRestName : String) {
         restName = newRestName
@@ -59,5 +72,15 @@ class Restaurant : Serializable {
 
     fun setAvgRating (rating : Float) {
         avgRating = rating
+    }
+
+    fun setLatitude (newLat : Double) {
+        latitude = newLat
+        Log.w("MapsActivity", "Set Latitude: " + latitude)
+    }
+
+    fun setLongitude (newLong : Double) {
+        longitude = newLong
+        Log.w("MapsActivity", "Set Longitude: " + longitude)
     }
 }
