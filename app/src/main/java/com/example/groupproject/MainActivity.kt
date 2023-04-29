@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setTestData()
 
-        foodListRv= findViewById(R.id.foodlistRv)
+        foodListRv = findViewById(R.id.foodlistRv)
 
         foodTypesList = testData.getFoodArray() // Get list of food types
 
