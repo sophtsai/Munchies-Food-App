@@ -57,7 +57,7 @@ class RestaurantProfileActivity: AppCompatActivity() {
 
         return when (item.itemId) {
             android.R.id.home -> {
-                onBackPressed()
+                onBackPressedDispatcher.onBackPressed()
                 true
             }
             else -> super.onOptionsItemSelected(item)
