@@ -1,11 +1,11 @@
 package com.example.groupproject
 
 class Foodlist {
-    private lateinit var foods : Array<Food>
+    private var foods : Array<Food>
 
     //constructor for single food item
     constructor (food : Food) {
-        foods = Array<Food> (1) {food}
+        foods = Array(1) {food}
     }
 
     //constructor for food array being assigned
