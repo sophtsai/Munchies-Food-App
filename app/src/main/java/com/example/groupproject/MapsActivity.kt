@@ -28,7 +28,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this@MapsActivity)
+        mapFragment.getMapAsync(this)
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -42,17 +42,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         if (address != null) {
             //retrieve latitude and longitude
             var geocoder : Geocoder = Geocoder (this)
-            //var handler : GeocodingHandler = GeocodingHandler()
             var addresses = geocoder.getFromLocationName(address, 5)
             if (addresses != null && addresses.isNotEmpty()) {
                 var latitude = addresses.get(0).latitude
                 var longitude = addresses.get(0).longitude
-                Log.w("MapsActivity", "Longitude and Latitude: " + restaurant.getLatitude() +
-                        " " + restaurant.getLongitude())
                 restaurant.setLatitude(latitude)
                 restaurant.setLongitude(longitude)
                 var location = LatLng(restaurant.getLatitude(), restaurant.getLongitude())
-                Log.w("MapsActivity", "New LatLng: " + location)
+
+                //moving map camera to location
                 try {
                     var update: CameraUpdate = CameraUpdateFactory.newLatLngZoom(location, 17.0f)
                     mMap.moveCamera(update)
@@ -64,35 +62,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             } else {
                 Log.w("MainActivity", "Sorry, no results")
             }
-            //moving map camera to location
+
 
         }
     }
-
-//    inner class GeocodingHandler : Geocoder.GeocodeListener {
-//        override fun onGeocode(addresses: MutableList<Address>) {
-//            if (addresses != null && addresses.isNotEmpty()) {
-//                var latitude = addresses.get(0).latitude
-//                var longitude = addresses.get(0).longitude
-//                Log.w("MapsActivity", "Longitude and Latitude: " + restaurant.getLatitude() +
-//                        " " + restaurant.getLongitude())
-//                restaurant.setLatitude(latitude)
-//                restaurant.setLongitude(longitude)
-//                var location = LatLng(restaurant.getLatitude(), restaurant.getLongitude())
-//                Log.w("MapsActivity", "New LatLng: " + location)
-//                try {
-//                    var update: CameraUpdate = CameraUpdateFactory.newLatLngZoom(location, 7.0f)
-//                    this@MapsActivity.mMap.moveCamera(update)
-//                    this@MapsActivity.mMap.addMarker(MarkerOptions().position(location))
-//                } catch (e: Exception) {
-//                    Log.w("MapsActivity", "Exception: " + e.message)
-//                }
-//
-//            } else {
-//                Log.w("MainActivity", "Sorry, no results")
-//            }
-//        }
-//
-//    }
 
 }
