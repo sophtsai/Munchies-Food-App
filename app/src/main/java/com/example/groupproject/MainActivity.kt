@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity() {
                 "chicken noodle soup is a savory and comforting dish featuring succulent chunks " +
                 "of chicken, aromatic herbs and spices, and silky egg noodles, all simmered " +
                 "together in a flavorful broth that will warm your soul and leave you feeling " +
-                "fully satisfied.", arrayOf(saladworks, umdSouthSoup)
+                "fully satisfied.", arrayOf(umdSouthSoup, saladworks)
         )
         val teriyaki = Food("Teriyaki Chicken", "The mouthwatering chicken " +
                 "teriyaki features tender, juicy chicken smothered in a deliciously sweet and " +
