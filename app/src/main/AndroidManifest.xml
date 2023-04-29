@@ -24,13 +24,19 @@
             android:value="@string/google_maps_key" />
         <!-- Restaurant Profile Activity -->
         <activity android:name=".RestaurantProfileActivity"
-            android:exported="true" />
+            android:exported="true"
+            />
         <!-- Specific Dish Activity -->
         <activity android:name=".SpecificDishActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".MainActivity"
+
+            />
         <!-- Map Activity -->
         <activity android:name=".MapsActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+
+            >
         </activity>
         <!-- Main Activity -->
         <activity

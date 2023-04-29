@@ -2,6 +2,7 @@ package com.example.groupproject
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,12 +20,14 @@ class SpecificDishActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_specific_dish)
 
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
         foodTypeTitle = findViewById(R.id.specificFoodTitle)
         foodTypeDesc = findViewById(R.id.dishDescriptionText)
         restaurantListRv = findViewById(R.id.specificFoodRv)
         addRestaurantFAB = findViewById(R.id.addRestaurantButton)
 
-        val foodType : Food = intent.getSerializableExtra(FOOD_EXTRA) as Food
+        val foodType: Food = intent.getSerializableExtra(FOOD_EXTRA) as Food
 
         // Set corresponding fields on page
         foodTypeTitle.text = foodType.getFoodTypeName()
@@ -41,5 +44,15 @@ class SpecificDishActivity: AppCompatActivity() {
             val intent = Intent(this, AddRestaurantActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onContextItemSelected(item)
     }
 }
