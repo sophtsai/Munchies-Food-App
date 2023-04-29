@@ -1,9 +1,16 @@
 package com.example.groupproject
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.Button
+import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var testData : Foodlist
@@ -12,15 +19,46 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setTestData()
 
-        val foodListRv : RecyclerView = findViewById<RecyclerView>(R.id.foodlistRv)
+        val foodListRv : RecyclerView = findViewById(R.id.foodlistRv)
 
-        var foodTypesList : Array<Food> = testData.getFoodArray() // Get list of food types
+        val foodTypesList : Array<Food> = testData.getFoodArray() // Get list of food types
 
         // Create adapter passing in list of food types
         val adapter = FoodlistRecyclerViewAdapter(foodTypesList)
 
         foodListRv.adapter = adapter // Attach adapter to recycler view to populate items
         foodListRv.layoutManager = LinearLayoutManager(this) // Set layout manager to position items
+
+        // Build the AdView
+        val adView = AdView(this)
+        val adSize = AdSize(AdSize.FULL_WIDTH, AdSize.AUTO_HEIGHT)
+        adView.setAdSize(adSize)
+        val adUnitId = "ca-app-pub-3940256099942544/6300978111"
+        adView.adUnitId = adUnitId
+
+        // Build the AdRequest
+        val builder : AdRequest.Builder = AdRequest.Builder()
+        builder.addKeyword("restaurant")
+        builder.addKeyword("food")
+        val request : AdRequest = builder.build()
+
+        // Add adView to LinearLayout
+        val adLayout : LinearLayout = findViewById( R.id.ad_view )
+        adLayout.addView(adView)
+
+        // Load the ad
+        try {
+            adView.loadAd(request)
+        } catch (e : Exception) {
+            Log.w("MainActivity", "Ad failed to load")
+        }
+
+        // If the x button is clicked, make the ad and button disappear
+        val closeButton = findViewById<Button>(R.id.close_button)
+        closeButton.setOnClickListener {
+            adLayout.visibility = View.GONE
+            closeButton.visibility = View.GONE
+        }
     }
 
     private fun setTestData ( ) {
