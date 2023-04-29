@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,12 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GroupProject"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
         <!-- Restaurant Profile Activity -->
         <activity android:name=".RestaurantProfileActivity"
             android:exported="true" />
         <!-- Specific Dish Activity -->
         <activity android:name=".SpecificDishActivity"
             android:exported="true" />
+        <!-- Map Activity -->
+        <activity android:name=".MapsActivity"
+            android:screenOrientation="portrait">
+        </activity>
         <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
@@ -29,6 +38,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent"
