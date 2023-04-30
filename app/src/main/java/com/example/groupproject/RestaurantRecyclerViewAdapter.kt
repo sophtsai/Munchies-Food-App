@@ -1,5 +1,6 @@
 package com.example.groupproject
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -44,10 +45,12 @@ class RestaurantRecyclerViewAdapter(private val context: Context,
         override fun onClick(v: View?) {
             val restaurant = restaurants[absoluteAdapterPosition] // Get selected food type
 
+            val activity = context as Activity
             // Navigate to specific dish screen and pass the food type
             val intent = Intent(context, RestaurantProfileActivity::class.java)
             intent.putExtra(RESTAURANT_EXTRA, restaurant)
-            context.startActivity(intent)
+            activity.startActivity(intent)
+            activity.overridePendingTransition( R.anim.fade_in, 0 )
         }
     }
 
