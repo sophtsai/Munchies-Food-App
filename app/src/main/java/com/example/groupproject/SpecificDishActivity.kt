@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.io.Serializable
 
-
 class SpecificDishActivity: AppCompatActivity() {
     private lateinit var restaurantListRv : RecyclerView
     private lateinit var foodTypeTitle : TextView
