@@ -1,5 +1,6 @@
 package com.example.groupproject
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+
 
 const val FOOD_EXTRA = "FOOD_EXTRA"
 
@@ -43,10 +45,12 @@ class FoodlistRecyclerViewAdapter(private val context: Context, private val food
         override fun onClick(v: View?) {
             val food = foods[absoluteAdapterPosition] // Get selected food type
 
+            val activity = context as Activity
             // Navigate to specific dish screen and pass the food type
             val intent = Intent(context, SpecificDishActivity::class.java)
             intent.putExtra(FOOD_EXTRA, food)
-            context.startActivity(intent)
+            activity.startActivity(intent)
+            activity.overridePendingTransition( R.anim.fade_in, 0 )
         }
     }
 
