@@ -68,7 +68,7 @@ class RestaurantProfileActivity: AppCompatActivity() {
         return when (item.itemId) {
             android.R.id.home -> {
                 onBackPressedDispatcher.onBackPressed()
-                overridePendingTransition( R.anim.fade_out, 0 )
+                overridePendingTransition( 0, R.anim.fade_out )
                 true
             }
             else -> super.onOptionsItemSelected(item)

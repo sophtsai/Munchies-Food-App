@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
-const val FOOD_EXTRA = "FOOD_EXTRA"
+const val FOOD_IND = "FOOD_IND"
 
 class FoodlistRecyclerViewAdapter(private val context: Context, private val foods: Array<Food>) :
     RecyclerView.Adapter<FoodlistRecyclerViewAdapter.FoodlistViewHolder>() {
@@ -48,7 +48,7 @@ class FoodlistRecyclerViewAdapter(private val context: Context, private val food
             val activity = context as Activity
             // Navigate to specific dish screen and pass the food type
             val intent = Intent(context, SpecificDishActivity::class.java)
-            intent.putExtra(FOOD_EXTRA, food)
+            intent.putExtra(FOOD_IND, absoluteAdapterPosition)
             activity.startActivity(intent)
             activity.overridePendingTransition( R.anim.fade_in, 0 )
         }

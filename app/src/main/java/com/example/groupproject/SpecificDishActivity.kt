@@ -1,9 +1,11 @@
 package com.example.groupproject
 
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,7 +15,6 @@ import java.io.Serializable
 
 
 class SpecificDishActivity: AppCompatActivity() {
-    private lateinit var restaurantListRv : RecyclerView
     private lateinit var foodTypeTitle : TextView
     private lateinit var foodTypeDesc : TextView
     private lateinit var restaurantList : Array<Restaurant>
@@ -24,14 +25,13 @@ class SpecificDishActivity: AppCompatActivity() {
         setContentView(R.layout.activity_specific_dish)
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        var index = intent.getIntExtra(FOOD_IND, 0)
+        foodType = MainActivity.foodList.getFoodArray()[index]
 
         foodTypeTitle = findViewById(R.id.specificFoodTitle)
         foodTypeDesc = findViewById(R.id.dishDescriptionText)
         restaurantListRv = findViewById(R.id.specificFoodRv)
         addRestaurantFAB = findViewById(R.id.addRestaurantButton)
-
-//        val foodType: Food = intent.getSerializableExtra(FOOD_EXTRA) as Food
-        val foodType: Food = getSerializable(intent, FOOD_EXTRA, Food::class.java)
 
         // Set corresponding fields on page
         foodTypeTitle.text = foodType.getFoodTypeName()
@@ -51,6 +51,7 @@ class SpecificDishActivity: AppCompatActivity() {
         }
     }
 
+
     private fun <T : Serializable?> getSerializable(intent: Intent, key: String, m_class: Class<T>): T {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU)
             intent.getSerializableExtra(key, m_class)!!
@@ -62,11 +63,18 @@ class SpecificDishActivity: AppCompatActivity() {
         when (item.itemId) {
             android.R.id.home -> {
                 finish()
-                overridePendingTransition( R.anim.fade_out, 0 )
+                overridePendingTransition( 0, R.anim.fade_out )
                 return true
             }
         }
         return super.onContextItemSelected(item)
     }
+
+    companion object {
+        lateinit var foodType : Food
+        lateinit var restaurantListRv : RecyclerView
+    }
+
+
 
 }
