@@ -1,5 +1,7 @@
 package com.example.groupproject
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
 import java.io.Serializable
 
@@ -83,4 +85,6 @@ class Restaurant : Serializable {
         longitude = newLong
         Log.w("MapsActivity", "Set Longitude: " + longitude)
     }
+
+
 }
