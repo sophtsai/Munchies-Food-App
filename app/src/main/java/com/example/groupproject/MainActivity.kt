@@ -1,11 +1,9 @@
 package com.example.groupproject
 
-
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.content.Intent
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,9 +13,8 @@ import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var testData : Foodlist
     private lateinit var foodListRv : RecyclerView
-    private lateinit var foodTypesList : Array<Food>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,10 +22,10 @@ class MainActivity : AppCompatActivity() {
 
         foodListRv = findViewById(R.id.foodlistRv)
 
-        foodTypesList = testData.getFoodArray() // Get list of food types
+        var listOfFoods = foodList.getFoodArray() // Get list of food types
 
         // Create adapter passing in list of food types
-        val adapter = FoodlistRecyclerViewAdapter(this, foodTypesList)
+        val adapter = FoodlistRecyclerViewAdapter(this, listOfFoods)
 
         foodListRv.adapter = adapter // Attach adapter to recycler view to populate items
         foodListRv.layoutManager = LinearLayoutManager(this) // Set layout manager to position items
@@ -116,6 +113,10 @@ class MainActivity : AppCompatActivity() {
                 "bite.", pupuseria)
 
         /** Foodlist - set testData **/
-        testData = Foodlist(arrayOf(chickenNoodle, teriyaki, pupusa))
+        foodList = Foodlist(arrayOf(chickenNoodle, teriyaki, pupusa))
+    }
+
+    companion object {
+        lateinit var foodList : Foodlist
     }
 }

@@ -3,13 +3,11 @@ package com.example.groupproject
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.RatingBar
 import android.widget.TextView
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import java.io.Serializable
 
@@ -68,7 +66,7 @@ class RestaurantProfileActivity: AppCompatActivity() {
         return when (item.itemId) {
             android.R.id.home -> {
                 onBackPressedDispatcher.onBackPressed()
-                overridePendingTransition( R.anim.fade_out, 0 )
+                overridePendingTransition( 0, R.anim.fade_out )
                 true
             }
             else -> super.onOptionsItemSelected(item)
