@@ -64,7 +64,7 @@ class AddRestaurantActivity : AppCompatActivity() {
 
         // go back
         finish( )
-        overridePendingTransition( R.anim.fade_out, 0 )
+        overridePendingTransition( R.anim.slide_left, 0 )
     }
 
 
@@ -101,7 +101,7 @@ class AddRestaurantActivity : AppCompatActivity() {
         return when (item.itemId) {
             android.R.id.home -> {
                 onBackPressedDispatcher.onBackPressed()
-                overridePendingTransition( 0, R.anim.fade_out )
+                overridePendingTransition( 0, R.anim.slide_left )
                 true
             }
             else -> super.onOptionsItemSelected(item)

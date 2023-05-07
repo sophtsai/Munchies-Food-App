@@ -42,7 +42,7 @@ class SpecificDishActivity: AppCompatActivity() {
         addRestaurantFAB.setOnClickListener {
             val intent = Intent(this, AddRestaurantActivity::class.java)
             startActivity(intent)
-            overridePendingTransition( R.anim.fade_in, 0 )
+            overridePendingTransition( R.anim.slide_right, 0 )
         }
     }
 
@@ -50,7 +50,7 @@ class SpecificDishActivity: AppCompatActivity() {
         when (item.itemId) {
             android.R.id.home -> {
                 finish()
-                overridePendingTransition( 0, R.anim.fade_out )
+                overridePendingTransition( 0, R.anim.slide_up )
                 return true
             }
         }

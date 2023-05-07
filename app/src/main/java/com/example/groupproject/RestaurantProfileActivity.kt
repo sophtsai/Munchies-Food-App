@@ -56,7 +56,7 @@ class RestaurantProfileActivity: AppCompatActivity() {
                 MapsActivity::class.java)
             intent.putExtra("RESTAURANT", restaurant)
             startActivity(intent)
-            overridePendingTransition( R.anim.fade_in, 0 )
+            overridePendingTransition( R.anim.zoom_in, 0 )
         }
 
     }

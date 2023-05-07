@@ -73,7 +73,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         return when (item.itemId) {
             android.R.id.home -> {
                 onBackPressedDispatcher.onBackPressed()
-                overridePendingTransition( 0, R.anim.fade_out )
+                overridePendingTransition( 0, R.anim.zoom_out )
                 true
             }
             else -> super.onOptionsItemSelected(item)
