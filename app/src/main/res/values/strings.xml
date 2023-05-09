@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Group Project</string>
+    <string name="app_name">Munchies</string>
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyD-xkGbrhRqvOLV7KlRRpfSXSvC-veM1EI</string>
 </resources>
