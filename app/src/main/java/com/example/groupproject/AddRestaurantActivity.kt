@@ -36,17 +36,6 @@ class AddRestaurantActivity : AppCompatActivity() {
         saveButton = findViewById(R.id.saveButton)
         restaurantListRv = SpecificDishActivity.restaurantListRv
 
-        //persistent data handling
-        var tch : TextChangeHandler = TextChangeHandler()
-        var rbh : RatingHandler = RatingHandler()
-
-
-        dishNameET.addTextChangedListener(tch)
-        restaurantNameET.addTextChangedListener(tch)
-        dishRating.onRatingBarChangeListener = rbh
-        mapAddressET.addTextChangedListener(tch)
-        dishDescriptionET.addTextChangedListener(tch)
-
         //persistent data
         var context = this@AddRestaurantActivity
         var pref : SharedPreferences = context.getSharedPreferences(context.packageName+ "_preferences",
@@ -56,6 +45,16 @@ class AddRestaurantActivity : AppCompatActivity() {
         dishRating.setRating(pref.getFloat(RATING, 0.0f))
         mapAddressET.setText(pref.getString(ADDR, ""))
         dishDescriptionET.setText(pref.getString(DISH_DESC, ""))
+
+        //persistent data handling
+        var tch : TextChangeHandler = TextChangeHandler()
+        var rbh : RatingHandler = RatingHandler()
+
+        dishNameET.addTextChangedListener(tch)
+        restaurantNameET.addTextChangedListener(tch)
+        dishRating.onRatingBarChangeListener = rbh
+        mapAddressET.addTextChangedListener(tch)
+        dishDescriptionET.addTextChangedListener(tch)
 
     }
 
