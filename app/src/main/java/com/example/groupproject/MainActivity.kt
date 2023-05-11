@@ -12,13 +12,17 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
 
+private var numOnCreate = 0
 class MainActivity : AppCompatActivity() {
     private lateinit var foodListRv : RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setTestData()
+        if (numOnCreate == 0) {
+            setTestData()
+            numOnCreate += 1
+        }
 
         foodListRv = findViewById(R.id.foodlistRv)
 
