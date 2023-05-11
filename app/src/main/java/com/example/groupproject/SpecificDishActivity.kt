@@ -2,6 +2,7 @@ package com.example.groupproject
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -14,15 +15,16 @@ class SpecificDishActivity: AppCompatActivity() {
     private lateinit var foodTypeDesc : TextView
     private lateinit var restaurantList : Array<Restaurant>
     private lateinit var addRestaurantFAB : FloatingActionButton
+    private lateinit var foodType : Food
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_specific_dish)
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        var index = intent.getIntExtra(FOOD_IND, 0)
+        index = intent.getIntExtra(FOOD_IND, 0)
         foodType = MainActivity.foodList.getFoodArray()[index]
-
+        Log.w("MA", "SDA: " + MainActivity.foodList.toString())
         foodTypeTitle = findViewById(R.id.specificFoodTitle)
         foodTypeDesc = findViewById(R.id.dishDescriptionText)
         restaurantListRv = findViewById(R.id.specificFoodRv)
@@ -58,8 +60,8 @@ class SpecificDishActivity: AppCompatActivity() {
     }
 
     companion object {
-        lateinit var foodType : Food
         lateinit var restaurantListRv : RecyclerView
+        var index : Int = 0
     }
 
 

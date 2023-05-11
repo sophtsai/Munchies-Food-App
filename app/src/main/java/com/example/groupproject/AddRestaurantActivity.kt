@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
@@ -79,8 +80,9 @@ class AddRestaurantActivity : AppCompatActivity() {
             dishDescriptionString, mapAddressString, dishRatingFloat)
 
         //attach it to the food that user clicked
-        val foodType : Food? = SpecificDishActivity.foodType
+        val foodType : Food? = MainActivity.foodList.getFoodArray()[SpecificDishActivity.index]
         foodType!!.appendRestaurant(newRestaurant)
+        MainActivity.foodList.getFoodArray()[SpecificDishActivity.index] = foodType
 
         //getting the adapter to work
         val location : Int = foodType.getNumRestaurants() - 1

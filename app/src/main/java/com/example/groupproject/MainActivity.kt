@@ -12,13 +12,17 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
 
+private var numOnCreate : Int = 0
 class MainActivity : AppCompatActivity() {
     private lateinit var foodListRv : RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setTestData()
+        if (numOnCreate == 0) {
+            setTestData()
+            numOnCreate += 1
+        }
 
         foodListRv = findViewById(R.id.foodlistRv)
 
@@ -29,6 +33,8 @@ class MainActivity : AppCompatActivity() {
 
         foodListRv.adapter = adapter // Attach adapter to recycler view to populate items
         foodListRv.layoutManager = LinearLayoutManager(this) // Set layout manager to position items
+
+        Log.w("MA", "ONCREATEMID: " + foodList.toString())
 
         // Build the AdView
         val adView = AdView(this)
@@ -62,6 +68,24 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+//    override fun onResume() {
+//        super.onResume()
+//
+//        foodListRv = findViewById(R.id.foodlistRv)
+//        var listOfFoods = foodList.getFoodArray() // Get list of food types
+//        Log.w("MA", "ONSTARTBEGIN: " + foodList.getFoodArray().toString())
+//        for (i in 0..foodList.getFoodArray()[0].getRestaurants().size - 1) {
+//            Log.w("MA", foodList.getFoodArray()[0].getRestaurants()[i].getRestName())
+//        }
+//        // Create adapter passing in list of food types
+//        val adapter = FoodlistRecyclerViewAdapter(this, listOfFoods)
+//
+//        foodListRv.adapter = adapter // Attach adapter to recycler view to populate items
+//        foodListRv.layoutManager = LinearLayoutManager(this) // Set layout manager to position items
+//        Log.w("MA", "ONSTARTEND: " + listOfFoods.toString())
+//
+//
+//    }
     private fun setTestData ( ) {
         /** Restaurants  - create restaurants using sample data **/
         val saladworks = Restaurant("Saladworks", "Chicken Noodle Soup",
@@ -114,6 +138,7 @@ class MainActivity : AppCompatActivity() {
 
         /** Foodlist - set testData **/
         foodList = Foodlist(arrayOf(chickenNoodle, teriyaki, pupusa))
+        Log.w("MA", "ONCREATEBEGIN: " + foodList.toString())
     }
 
     companion object {
