@@ -1,2 +1,2 @@
-# 436-Group-Project
-Group Project for CMSC436
+# Munchies
+An Android food app written in Kotlin
